@@ -113,7 +113,6 @@
                 echo "<td>" . $row["registration_type"] . "</td>";
                 echo "<td class='action-buttons'>";
                 echo "<button class='delete-button' onclick='deleteRecord(" . $row["student_id"] . ")'>Delete</button>";
-                // Add edit functionality here
                 // echo "<button class='edit-button' onclick='editRecord(" . $row["student_id"] . ")'>Edit</button>";
                 echo "</td>";
                 echo "</tr>";
@@ -128,18 +127,16 @@
         ?>
     </table>
 
-    <!-- Your JavaScript code for delete and edit operations can be added here -->
     <script>
         // JavaScript function to handle delete operation
         function deleteRecord(student_id) {
-            // You can use Ajax to send a request to the server to delete the record
-            // For simplicity, we'll just use a confirm dialog to show a confirmation
+
             if (confirm("Are you sure you want to delete this record?")) {
                 window.location.href = 'delete_student.php?student_id=' + student_id;
             }
         }
 
-        // You can add similar JavaScript function for edit operation
+      \
     </script>
 </body>
 </html>
