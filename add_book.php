@@ -2,7 +2,7 @@
 // Database configuration
 $servername = "localhost";
 $username = "root";
-$password = ""; // Leave it blank for no password
+$password = ""; 
 $dbname = "SE";
 
 // Create a connection
@@ -18,17 +18,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Retrieve form data and sanitize/validate as needed
     $title = isset($_POST["title"]) ? $_POST["title"] : "";
     $author = isset($_POST["author"]) ? $_POST["author"] : "";
-    $isbn = isset($_POST["isbn"]) ? $_POST["isbn"] : "";
+    $isbn = isset($_POST["isbn"]) ? $_POST["ISBN"] : "";
 
-    // Prepare the INSERT query with backticks around column names
+    
     $sql = "INSERT INTO book_register (title, author, isbn) VALUES ('$title', '$author', '$isbn')";
 
     // Execute the query
     if ($conn->query($sql) === true) {
-        // Insertion successful, display a success message
+        // Insertion successful, displays a success message
         echo "<p>Book added successfully.</p>";
     } else {
-        // Insertion failed, display an error message or handle the error accordingly
+        // Insertion failed, displays an error message 
         echo "<p>Error: " . $sql . "<br>" . $conn->error . "</p>";
     }
 }
