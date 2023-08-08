@@ -100,7 +100,7 @@
         $sql = "SELECT * FROM book";
         $result = $conn->query($sql);
 
-        // Check if the query was successful and if any records are found
+        // Checking if the query was successful and if any records are found
         if ($result !== false && $result->num_rows > 0) {
             // Loop through each row and display the data in the table
             while ($row = $result->fetch_assoc()) {
