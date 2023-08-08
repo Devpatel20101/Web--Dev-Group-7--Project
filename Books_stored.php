@@ -17,18 +17,18 @@
     // Database configuration
     $servername = "localhost";
     $username = "root";
-    $password = ""; // Leave it blank for no password
+    $password = ""; 
     $dbname = "SE";
 
-    // Create a connection
+    // Creating a connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check the connection
+    // Checking the connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Handle book deletion
+    // Handling book deletion
     if (isset($_GET["delete"])) {
         $delete_id = $_GET["delete"];
         $sql_delete = "DELETE FROM book_register WHERE `File number` = $delete_id";
@@ -39,20 +39,19 @@
         }
     }
 
-    // Retrieve all books from the database
+    // Retrieving all the books from the database
     $sql = "SELECT * FROM book_register";
     $result = $conn->query($sql);
 
-    // Check if there are any books in the database
+    // Checking if there are any books in the database
     if ($result->num_rows > 0) {
-        // Output data of each row
         while ($row = $result->fetch_assoc()) {
             $id = $row["File number"];
             echo "<p><strong>Title:</strong> " . $row["title"] . "</p>";
             echo "<p><strong>Author:</strong> " . $row["author"] . "</p>";
             echo "<p><strong>ISBN:</strong> " . $row["isbn"] . "</p>";
             
-            // Add links to update and delete book records
+            // Adding links to update and delete book records
             echo "<p><a href='edit_book.php?id=$id'>Edit</a> | 
                   <a href='Books_stored.php?delete=$id' onclick=\"return confirm('Are you sure you want to delete this book?')\">Delete</a></p>";
             echo "<hr>";
