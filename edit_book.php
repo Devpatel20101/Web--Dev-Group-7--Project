@@ -2,7 +2,7 @@
 // Database configuration
 $servername = "localhost";
 $username = "root";
-$password = ""; // Leave it blank for no password
+$password = ""; 
 $dbname = "SE";
 
 // Create a connection
@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 if (isset($_GET["id"])) {
     $edit_id = $_GET["id"];
 
-    // Retrieve the book details based on the given ID
+    // Retrieving the book details based on the given ID
     $sql = "SELECT * FROM book_register WHERE `File number` = $edit_id";
     $result = $conn->query($sql);
 
@@ -34,14 +34,14 @@ if (isset($_GET["id"])) {
     exit;
 }
 
-// Handle form submission for updating book details
+// Handling form submission for updating book details
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Retrieve form data and sanitize/validate as needed
     $title = isset($_POST["title"]) ? $_POST["title"] : "";
     $author = isset($_POST["author"]) ? $_POST["author"] : "";
     $isbn = isset($_POST["isbn"]) ? $_POST["isbn"] : "";
 
-    // Update the book details in the database
+    // for updating the book details in the database
     $sql_update = "UPDATE book_register SET title = '$title', author = '$author', isbn = '$isbn' WHERE `File number` = $edit_id";
 
     if ($conn->query($sql_update) === true) {
