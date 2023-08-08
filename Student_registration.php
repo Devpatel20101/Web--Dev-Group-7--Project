@@ -78,13 +78,13 @@
         // Database configuration
         $servername = "localhost";
         $username = "root";
-        $password = ""; // Leave it blank for no password
+        $password = ""; 
         $dbname = "SE";
 
-        // Create a new connection
+        // Creating a new connection
         $conn = new mysqli($servername, $username, $password, $dbname);
 
-        // Check the connection
+        // Checking the connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -96,13 +96,13 @@
             $conn->query($sql);
         }
 
-        // Retrieve all student records from the database
+        // Retrieving all the student records from the database
         $sql = "SELECT * FROM book";
         $result = $conn->query($sql);
 
         // Checking if the query was successful and if any records are found
         if ($result !== false && $result->num_rows > 0) {
-            // Loop through each row and display the data in the table
+            
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>" . $row["file_number"] . "</td>";
